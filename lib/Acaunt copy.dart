@@ -329,7 +329,8 @@ class _SignInForm extends StatelessWidget {
                     errorStyle: TextStyle(color: Colors.red),
                     errorBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                            color: Color.fromARGB(255, 160, 12, 2))));
+                            color: Color.fromARGB(255, 160, 12, 2)))
+                            );
 
                 pswdOk = false;
               }

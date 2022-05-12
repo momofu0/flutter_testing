@@ -240,6 +240,7 @@ class _Header extends StatelessWidget {
 class _CustomTextField extends StatelessWidget {
   final String labelText;
   final String hintText;
+  final String decoration;
   final bool obscureText;
 
   const _CustomTextField({
@@ -247,6 +248,7 @@ class _CustomTextField extends StatelessWidget {
     required this.labelText,
     required this.hintText,
     required this.obscureText,
+    required this.decoration,
   }) : super(key: key);
 
   @override
@@ -271,6 +273,7 @@ class _CustomTextField extends StatelessWidget {
         ),
       ),
       obscureText: obscureText,
+
       onTap: () {},
     );
   }
@@ -289,9 +292,8 @@ class _SignInForm extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-            enabled: true,
             obscureText: false,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Email',
               hintText: 'メールアドレスを入力してください',
             ),
@@ -299,13 +301,7 @@ class _SignInForm extends StatelessWidget {
             //適切なメールアドレスに誘導する
             onChanged: (String value) {
               newEmail = value;
-              ////internal_idはやたぺんさんの定義から
-            }
-
-            /*onSaved: (text) {
-              internalId = text;
-            }*/
-            ),
+            }),
         SizedBox(height: 48),
         TextFormField(
             decoration: const InputDecoration(
@@ -322,15 +318,7 @@ class _SignInForm extends StatelessWidget {
 
                 print('ok'); //
               } else {
-                //入力した文字列をリセットしたい
-                Decoration:
-                InputDecoration(
-                    errorText: 'エラーメッセージ',
-                    errorStyle: TextStyle(color: Colors.red),
-                    errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Color.fromARGB(255, 160, 12, 2)))
-                            );
+                //入力した文字列をリセットしたい or エラー文を表示させたい
 
                 pswdOk = false;
               }
@@ -374,8 +362,9 @@ class _SignInForm extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            onPressed: () {//sign in 押した時の処理
-              if(pswdOk == true){
+            onPressed: () {
+              //sign in 押した時の処理
+              if (pswdOk == true) {
                 /*Navigator.push(
                     context,
                     MaterialPageRoute(
